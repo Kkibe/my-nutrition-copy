@@ -25,8 +25,6 @@ export const db = initializeFirestore(app, {
 //const storage = getStorage(app);
 //const functionsInstance = functions(app);
 export const auth = getAuth(app);
-// Enable offline persistence
-await enableIndexedDbPersistence(db);
 //additional features
 const analytics = getAnalytics(app);
 //const remoteConfig = getRemoteConfig(app);
