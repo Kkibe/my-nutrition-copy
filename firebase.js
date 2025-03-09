@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { ref } from "firebase/database";
 //import { collection, addDoc, ref, uploadBytes, getDoc, enableIndexedDbPersistence, getFirestore } from "firebase/firestore";
-import {addDoc, collection, deleteDoc, doc, enableIndexedDbPersistence, getDoc, getDocs, getFirestore, limit, orderBy, query, updateDoc } from "firebase/firestore";
+import {addDoc, collection, deleteDoc, doc, initializeFirestore, persistentLocalCache, getDoc, getDocs, getFirestore, limit, orderBy, query, updateDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -18,7 +18,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+//export const db = getFirestore(app);
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache()
+});
 //const storage = getStorage(app);
 //const functionsInstance = functions(app);
 export const auth = getAuth(app);
